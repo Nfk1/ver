@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Каталог предметов с фильтром</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Каталог предметов</h1>
+  <input type="text" id="filterInput" placeholder="Поиск по названию..." />
+  <div class="catalog" id="catalog"></div>
+  <div id="modalOverlay">
+      <form id="orderForm" style="display:none; border:1px solid #ccc; padding:20px; margin-top:20px; background:#fafafa;">
+  <h3>Форма заявки</h3>
+  <label>
+    Имя:<br>
+    <input type="text" name="name" required>
+  </label>
+  <label>
+    Телефон или email:<br>
+    <input type="text" name="contact" required>
+  </label>
+  <button type="submit">Отправить</button>
+  <button type="button" id="closeFormBtn">Закрыть</button>
+</form>
+  </div>
+
+
+  <script>
+     let catalogData = [];
+
+    const catalog = document.getElementById('catalog');
+    const filterInput = document.getElementById('filterInput');
+
+  
+    function renderCatalog(items) {
+      catalog.innerHTML = ''; 
+      if (items.length === 0) {
+        catalog.innerHTML = '<p>Ничего не найдено.</p>';
+        return;
+      }
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'item';
+        card.id = item.id;
+
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title}">
+          <h3>${item.title}</h3>
+          <p>${item.description || ''}</p>
+          <button>${"Узнать больше"}</button>
+          <button class="orderBtn">${"Оставить заявку"}</button>
+        `;
+        card.querySelector('.orderBtn').addEventListener('click', () => {
+        const form = document.getElementById('orderForm');
+        const modal = document.getElementById('modalOverlay');
+        form.style.display = 'block';
+        modal.style.display = 'block';
+        
+    });
+        document.getElementById('closeFormBtn').addEventListener('click', () => {
+    document.getElementById('orderForm').style.display = 'none';
+    document.getElementById('modalOverlay').style.display = 'none';
+    });
+
+        catalog.appendChild(card);
+      });
+    }
+
+    
+    async function loadData() {
+      try {
+        const response = await fetch('items.json');
+        if (!response.ok) throw new Error('Ошибка при загрузке данных.');
+
+        catalogData = await response.json();
+        renderCatalog(catalogData);
+
+      } catch(err) {
+        catalog.innerHTML = '<p>Ошибка загрузки каталога.</p>';
+        console.error(err);
+      }
+    }
+
+    // Обработчик поиска - фильтруем по title из catalogData
+    filterInput.addEventListener('input', () => {
+      const searchText = filterInput.value.toLowerCase().trim();
+      const filtered = catalogData.filter(item => item.title.toLowerCase().includes(searchText));
+      renderCatalog(filtered);
+    });
+
+    loadData();
+  </script>
+
+</body>
+</html>
