@@ -72,7 +72,7 @@
     
     async function loadData() {
       try {
-        const response = await fetch('ver/items.json');
+        const response = await fetch('items.json');
         if (!response.ok) throw new Error('Ошибка при загрузке данных.');
 
         catalogData = await response.json();
@@ -97,4 +97,5 @@
 </body>
 
 </html>
+
 
