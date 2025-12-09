@@ -44,7 +44,7 @@
         font-weight: bold;
         margin-bottom: 5px;
     }
-    @media(max-width: 400px){
+    @media(max-width: 500px){
         .item button{
             width: 100%;
         }
@@ -135,4 +135,5 @@
     }
     #orderForm #closeFormBtn:hover {
       background-color: #999;
+
     }
