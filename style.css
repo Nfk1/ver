@@ -42,6 +42,7 @@
         font-size: 17px;
         font-weight: bold;
         margin-bottom: 5px;
+        color:white;
     }
     @media(max-width: 400px){
         .item button{
@@ -146,4 +147,5 @@
         height: 40px;
         width: 17%;
         margin-left:10px;
+
     }
