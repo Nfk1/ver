@@ -1,7 +1,7 @@
 
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background-color: #ffffff;
       padding: 20px;
     }
     h1 {
@@ -27,7 +27,7 @@
     .item {
       background-color: white;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.322);
       width: 420px;
       padding: 15px;
       box-sizing: border-box;
@@ -184,3 +184,4 @@
 .description {
   line-height: 1.6;
 }
+
