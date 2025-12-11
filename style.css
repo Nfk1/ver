@@ -45,7 +45,7 @@
         
         
     }
-    @media(max-width: 2000px){
+    @media(max-width: 1000px){
         .item button{
             width: 100%;
             margin-bottom: 7px;
@@ -149,4 +149,5 @@
         height: 40px;
         width: 17%;
         margin-left:10px;
+
     }
