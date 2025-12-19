@@ -1,0 +1,374 @@
+body {
+  margin: 0;
+}
+
+header {
+  height: 60px;
+  width: 100%;
+  background-color: rgb(255, 17, 0);
+  display: flex;
+  align-items: center;
+}
+
+header a {
+  font-size: 50px;
+  margin: 0;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 60px;
+}
+
+.fixed-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 15px; /* Отступы для мобильных */
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(255, 255, 255);
+  gap: 50px;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+/* Контейнер для фото + видео (левая колонка на десктопе) */
+/* Контейнер для фото + видео (левая колонка на десктопе) */
+.media-column {
+  flex: 0 0 800px; /* Увеличено с 480px → 960px (в 2 раза) */
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Немного увеличили отступы для баланса */
+  margin-right: 40px; /* Увеличено с 30px → 40px */
+}
+
+.media-column picture,
+.media-column video {
+  width: 100%;
+  border-radius: 24px; /* Увеличено с 20px → 24px для пропорциональности */
+  overflow: hidden;
+  max-width: 100%; /* Гарантируем, что не выйдет за контейнер */
+}
+
+/* Контейнер для информации и таблицы (правая колонка на десктопе) */
+.specs-column {
+  flex: 1 1 800px; /* Увеличено с 600px → 800px для баланса */
+  min-width: 0;
+}
+
+picture {
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+
+picture img {
+  width: 100%;
+  height: auto;
+  border-radius: 24px; /* Увеличено с 20px → 24px */
+  max-width: 1600px; /* Увеличено с 800px → 1600px (в 2 раза) */
+  display: block;
+  object-fit: contain; /* Сохраняем пропорции, не растягиваем */
+}
+
+.main-info {
+  flex: 1 1 600px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-info h1 {
+  color: white;
+  background-color: rgb(255, 0, 0);
+  font-weight: bold;
+  height: 70px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  max-width: 600px;
+  text-align: center;
+  align-self: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-info .description {
+  padding: 15px 20px;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.media-column .buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between ;
+  padding: 0 10px;
+}
+
+.media-column .buttons-container button {
+  width: 370px;
+  height: 50px;
+  background-color: red;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.media-column .buttons-container button:hover {
+  background-color: rgb(255, 101, 101);
+  transform: scale(0.97);
+}
+
+/* Стили таблицы характеристик */
+.specs-table {
+  margin-top: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  color: #333;
+  width: 100%;
+}
+
+.category {
+  margin-bottom: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.category h3 {
+  background: linear-gradient(135deg, #ff0505 0%, #ff0381 100%);
+  margin: 0;
+  padding: 16px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.category table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+.category tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.category tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.category .label {
+  font-weight: 600;
+  color: #444;
+  padding: 14px 20px;
+  vertical-align: top;
+  width: 35%;
+  background-color: #f9f9f9;
+  border-right: 1px solid #eaeaea;
+}
+
+.category .value {
+  padding: 14px 20px;
+  vertical-align: top;
+  color: #555;
+  width: 65%;
+}
+
+/* Адаптивность: для планшетов и мобильных */
+@media (max-width: 768px) {
+  header{
+            justify-content: center;
+        }
+        header a{
+            font-size: 30px;
+            margin: 0;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+    }    
+  main {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .media-column,
+  .specs-column {
+     flex: 1 1 100%;
+    margin-right: 0;
+    gap: 20px;
+  }
+
+  .media-column {
+    order: 1;
+  }
+
+  /* Видео внутри .media-column будет идти после картинки */
+  .media-column picture,
+  .media-column video {
+    border-radius: 16px; /* На мобильных чуть меньше скругление */
+  }
+  picture img {
+    max-width: 100%; /* На мобильных — во всю ширину */
+    border-radius: 16px;
+  }
+
+  .specs-column {
+    order: 3;
+    
+  }
+
+  .main-info h1 {
+    font-size: 18px;
+    height: 60px;
+    border-radius: 15px;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .main-info .description {
+    font-size: 16px;
+    padding: 12px 15px;
+  }
+
+  .main-info .buttons-container {
+    gap: 20px;
+    padding: 0 5px;
+  }
+
+  .main-info .buttons-container button {
+    width: 100%;
+    max-width: 270px;
+    font-size: 15px;
+  }
+
+  .category h3 {
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+
+  .category .label,
+  .category .value {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Мобильные телефоны (очень узкие экраны) */
+@media (max-width: 480px) {
+  .main-info h1 {
+    font-size: 16px;
+    height: 55px;
+    border-radius: 12px;
+  }
+
+  .main-info .description {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .main-info .buttons-container {
+    gap: 8px;
+    padding: 0 8px;
+  }
+
+  .main-info .buttons-container button {
+    width: 100%;
+    max-width: none;
+    font-size: 14px;
+    height: 45px;
+  }
+
+  .category {
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+
+  .category h3 {
+    font-size: 15px;
+    padding: 12px 14px;
+  }
+
+  .category .label,
+  .category .value {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eaeaea;
+    margin: 0;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .category .label {
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 0;
+    background-color: #f5f5f5;
+    font-weight: 600;
+  }
+
+  .category .value {
+    border-top: none;
+  }
+
+  /* Дополнительные корректировки для компактности */
+  .media-column {
+    gap: 15px;
+  }
+
+  .media-column picture img,
+  .media-column video {
+    border-radius: 16px;
+  }
+
+  .specs-column {
+    padding: 0 8px;
+  }
+
+  .no-specs {
+    padding: 16px;
+    font-size: 13px;
+  }
+}
+
+/* Сообщение, если характеристик нет */
+.no-specs {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px dashed #ddd;
+  margin: 10px 0;
+}
+
+/* Анимация появления таблицы */
+.specs-table {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
