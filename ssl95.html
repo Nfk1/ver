@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Продукт</title>
+  <meta name="theme-color" content="#ff0000" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Ваше название">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/apple-icon-180.png">
+  <link rel="stylesheet" href="product_style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">Каталог техники</a>
+  </header>
+
+  <div class="fixed-container">
+    <main id="product-main">
+      <!-- Контент генерируется JS -->
+    </main>
+  </div>
+  <script>
+    if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(registration => {
+        console.log('SW зарегистрирован:', registration);
+      })
+      .catch(error => {
+        console.log('Ошибка регистрации SW:', error);
+      });
+  });
+}
+  </script>
+  <script src="product.js"></script>
+</body>
+</html>
